@@ -52,6 +52,10 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("4_dqkch")
 
+[connection signal="on_level_up" from="." to="." method="_on_level_up"]
 [connection signal="body_entered" from="fallable_collider_check" to="fallable_collider_check" method="_on_body_entered"]
 [connection signal="body_exited" from="fallable_collider_check" to="fallable_collider_check" method="_on_body_exited"]
+[connection signal="on_fallable_exited" from="fallable_collider_check" to="." method="_on_fallable_collider_check_exited"]
 [connection signal="body_entered" from="fallable_score_check" to="fallable_score_check" method="_on_body_entered"]
+[connection signal="on_fallable_entered" from="fallable_score_check" to="." method="_on_fallable_score_check"]
+[connection signal="on_fallable_entered" from="fallable_above_hole_check" to="." method="_on_fallable_above_hole_check"]

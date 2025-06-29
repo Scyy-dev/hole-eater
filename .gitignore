@@ -13,8 +13,4 @@ export_credentials.cfg
 # Mono-specific ignores
 .mono/
 data_*/
-<<<<<<< HEAD
 mono_crash.*.json
-=======
-mono_crash.*.json
->>>>>>> 2b716b2 (init git repo)

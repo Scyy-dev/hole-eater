@@ -17,7 +17,9 @@ const COLLIDER_NAME_PREFIX := "hidden_collider_"
 @export var level_base_scale: float = 1
 @export var hidden_collider_height_ratio: float = 0.8
 @export var grid_size_radius_ratio: float = sqrt(2)
-@export var camera_radius_ratio: float = 1
+@export var camera_angle: float = -15
+@export var camera_position_angle: float = 30
+@export var camera_radius_ratio: float = 4
 
 @onready var hole_visual: MeshInstance3D = $hole_visual
 @onready var outer_ring_visual: MeshInstance3D = $outer_ring_visual
@@ -154,7 +156,17 @@ func generate_collider_checks() -> void:
 	fallable_above_hole_check.add_child(above_hole_check)
 	
 func scale_camera() -> void:
-	pass
+	# Camera Position
+	var angle = deg_to_rad(camera_position_angle)
+	var radius = get_radius()
+	var camera_y = radius * camera_radius_ratio * sin(angle)
+	var camera_z = radius * camera_radius_ratio * cos(angle)
+	camera.transform.origin.y = camera_y
+	camera.transform.origin.z = camera_z
+	
+	# Camera Rotation
+	var rotation = Vector3(deg_to_rad(camera_angle), 0, 0)
+	camera.transform.basis = Basis.from_euler(rotation)
 	
 func _on_level_up(_player: Player, _levels_gained: int) -> void:
 	scale_visuals()

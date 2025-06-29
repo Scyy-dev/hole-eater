@@ -33,7 +33,6 @@ script = ExtResource("1_sugp2")
 environment = SubResource("Environment_jyhfs")
 
 [node name="ground" type="StaticBody3D" parent="."]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
 shape = SubResource("BoxShape3D_o6xl0")
@@ -76,13 +75,8 @@ xp_given = 2
 [node name="player" parent="." instance=ExtResource("2_sugp2")]
 speed = 4.0
 xp_req_base = 3.0
-xp_req_power_base = 2.0
-xp_req_power_exponent = 0.5
-level_scale_factor = 0.5
-level_base_scale = 1.0
-hidden_collider_height_ratio = 0.8
-grid_size_radius_ratio = 1.41421
-camera_radius_ratio = 1.0
+camera_angle = -35.0
+camera_position_angle = 50.0
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
