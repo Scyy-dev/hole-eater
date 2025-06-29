@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3jap5q88sia5"]
+
+[ext_resource type="Script" uid="uid://6d0mdknrevl1" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bo1bfneimthr7" path="res://scripts/fallable_collider_check.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://demi83qyst7xj" path="res://scripts/fallable_score_check.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cmyngbwl6h5ic" path="res://scripts/fallable_above_hole_check.gd" id="4_dqkch"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g2els"]
+material = SubResource("StandardMaterial3D_3vyb7")
+top_radius = 0.8
+bottom_radius = 0.8
+height = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhqgy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qhqgy"]
+material = SubResource("StandardMaterial3D_qhqgy")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.05
+
+[node name="player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
+axis_lock_linear_y = true
+script = ExtResource("1_3vyb7")
+
+[node name="hole_visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_g2els")
+
+[node name="outer_ring_visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_qhqgy")
+
+[node name="fallable_collider_check" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("2_g2els")
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 3, 5)
+current = true
+
+[node name="fallable_score_check" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("3_qhqgy")
+
+[node name="fallable_above_hole_check" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("4_dqkch")
+
+[connection signal="body_entered" from="fallable_collider_check" to="fallable_collider_check" method="_on_body_entered"]
+[connection signal="body_exited" from="fallable_collider_check" to="fallable_collider_check" method="_on_body_exited"]
+[connection signal="body_entered" from="fallable_score_check" to="fallable_score_check" method="_on_body_entered"]

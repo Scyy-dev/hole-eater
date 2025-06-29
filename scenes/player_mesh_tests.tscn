@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c54etqx5ws8pn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+radius = 1.0
+height = 0.09
+sides = 24
