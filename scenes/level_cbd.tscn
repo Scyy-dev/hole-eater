@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1v1wkwp2gwwu"]
 
 [ext_resource type="PackedScene" uid="uid://c3fep654huxhi" path="res://scenes/fallable.tscn" id="1_0wfyh"]
-[ext_resource type="Script" uid="uid://cfruvhuqtyt2g" path="res://scripts/game.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://cfruvhuqtyt2g" path="res://scripts/game_level.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://d3jap5q88sia5" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://bu5mnachl662o" path="res://scripts/fallable_controller.gd" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dekabsogdmvty" path="res://scenes/world_ui.tscn" id="4_jyhfs"]
@@ -25,10 +25,11 @@ size = Vector3(100, 0.01, 100)
 [sub_resource type="PlaneMesh" id="PlaneMesh_o5qli"]
 size = Vector2(100, 100)
 
-[node name="root" type="Node3D" node_paths=PackedStringArray("player", "ui_controller")]
+[node name="root" type="Node3D" node_paths=PackedStringArray("player", "ui_controller", "fallable_controller")]
 script = ExtResource("1_sugp2")
 player = NodePath("player")
 ui_controller = NodePath("world_ui")
+fallable_controller = NodePath("fallable_controller")
 
 [node name="player" parent="." instance=ExtResource("2_sugp2")]
 speed = 4.0

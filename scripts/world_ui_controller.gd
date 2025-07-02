@@ -3,7 +3,6 @@ class_name WorldUIController
 
 signal restart_level
 signal exit_to_menu
-signal player_color_picked(color: Color)
 
 @export var player: Player
 @export var fallable_controller: FallableController
@@ -27,7 +26,6 @@ func _ready() -> void:
 	
 	restart_level_button.pressed.connect(_on_restart_level_button_pressed)
 	exit_to_menu_button.pressed.connect(_on_exit_to_menu_button_pressed)
-	pick_colour_button.color_changed.connect(_on_pick_player_color)
 	
 	player_ui.visible = true
 	menu_ui.visible = false
@@ -44,9 +42,6 @@ func _on_restart_level_button_pressed() -> void:
 	
 func _on_exit_to_menu_button_pressed() -> void:
 	exit_to_menu.emit()
-	
-func _on_pick_player_color(color: Color) -> void:
-	player_color_picked.emit(color)
 	
 func _on_xp_gained(amount: float, new_xp: float, next_level_xp_cost: float) -> void:
 	# TODO - lerp XP gained

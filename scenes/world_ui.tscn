@@ -76,14 +76,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Exit to Menu"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="menu_ui/VBoxContainer"]
-layout_mode = 2
-
-[node name="pick_colour_label" type="Label" parent="menu_ui/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Pick Colour"
-
-[node name="pick_colour_button" type="ColorPickerButton" parent="menu_ui/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Pick Colour"
+[node name="win_ui" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
