@@ -165,8 +165,8 @@ func scale_camera() -> void:
 	camera.transform.origin.z = camera_z
 	
 	# Camera Rotation
-	var rotation = Vector3(deg_to_rad(camera_angle), 0, 0)
-	camera.transform.basis = Basis.from_euler(rotation)
+	var camera_rotation = Vector3(deg_to_rad(camera_angle), 0, 0)
+	camera.transform.basis = Basis.from_euler(camera_rotation)
 	
 func _on_level_up(_player: Player, _levels_gained: int) -> void:
 	scale_visuals()

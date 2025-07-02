@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1v1wkwp2gwwu"]
+
+[ext_resource type="PackedScene" uid="uid://c3fep654huxhi" path="res://scenes/fallable.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://cfruvhuqtyt2g" path="res://scripts/game.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://d3jap5q88sia5" path="res://scenes/player.tscn" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://bu5mnachl662o" path="res://scripts/fallable_controller.gd" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dekabsogdmvty" path="res://scenes/world_ui.tscn" id="4_jyhfs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_sugp2"]
+sky_material = SubResource("ProceduralSkyMaterial_0wfyh")
+
+[sub_resource type="Environment" id="Environment_jyhfs"]
+background_mode = 2
+sky = SubResource("Sky_sugp2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
+size = Vector3(100, 0.01, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o5qli"]
+size = Vector2(100, 100)
+
+[node name="root" type="Node3D" node_paths=PackedStringArray("player", "ui_controller")]
+script = ExtResource("1_sugp2")
+player = NodePath("player")
+ui_controller = NodePath("world_ui")
+
+[node name="player" parent="." instance=ExtResource("2_sugp2")]
+speed = 4.0
+xp_req_base = 3.0
+camera_angle = -35.0
+camera_position_angle = 50.0
+
+[node name="world_ui" parent="." node_paths=PackedStringArray("player", "fallable_controller") instance=ExtResource("4_jyhfs")]
+player = NodePath("../player")
+fallable_controller = NodePath("../fallable_controller")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jyhfs")
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("BoxShape3D_o6xl0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+mesh = SubResource("PlaneMesh_o5qli")
+
+[node name="fallable_controller" type="Node3D" parent="."]
+script = ExtResource("2_tbgi4")
+
+[node name="c1" parent="fallable_controller" instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.76745)
+mass = 0.1
+
+[node name="c2" parent="fallable_controller" instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.5349)
+mass = 0.1
+
+[node name="c3" parent="fallable_controller" instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0698)
+mass = 0.1
+level_req = 2
+xp_given = 50
+
+[node name="c4" parent="fallable_controller" instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44209, 0, -20.997)
+mass = 0.1
+xp_given = 2
+
+[node name="c5" parent="fallable_controller" instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13558, 0, -17.9084)
+mass = 0.1
+xp_given = 2
+
+[node name="c6" parent="fallable_controller" instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.343)
+mass = 0.1
+level_req = 2
+xp_given = 2

@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Hole Eater"
-run/main_scene="uid://b1v1wkwp2gwwu"
+run/main_scene="uid://tb5fhmdc8kjb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 

@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://dekabsogdmvty"]
+
+[ext_resource type="Script" uid="uid://q1ymub3wxk3e" path="res://scripts/world_ui_controller.gd" id="1_qemj2"]
+
+[node name="world_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qemj2")
+
+[node name="player_ui" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="xp_bar" type="ProgressBar" parent="player_ui"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 276.0
+offset_top = 600.0
+offset_right = 876.0
+offset_bottom = 627.0
+size_flags_vertical = 8
+
+[node name="level_label" type="Label" parent="player_ui"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 526.0
+offset_top = 570.0
+offset_right = 626.0
+offset_bottom = 593.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="world_progress_bar" type="ProgressBar" parent="player_ui"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 276.0
+offset_top = 40.0
+offset_right = 876.0
+offset_bottom = 67.0
+
+[node name="progress_label" type="Label" parent="player_ui"]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 10.0
+offset_right = 611.0
+offset_bottom = 33.0
+text = "Progress"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu_ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu_ui"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 50.0
+offset_right = 976.0
+offset_bottom = 550.0
+
+[node name="restart_level_button" type="Button" parent="menu_ui/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart"
+
+[node name="exit_to_menu_button" type="Button" parent="menu_ui/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit to Menu"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menu_ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="pick_colour_label" type="Label" parent="menu_ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Pick Colour"
+
+[node name="pick_colour_button" type="ColorPickerButton" parent="menu_ui/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pick Colour"
